@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Claude Toolkit - Jacqui McGregor Wellbeing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --cream: #FDF6F2;
+    --mid-cream: #F5EDE0;
+    --navy: #0F1E36;
+    --rose: #C4956A;
+    --light-rose: #D4A882;
+    --bronze: #B07856;
+    --charcoal: #1A1A2E;
+    --white: #FFFFFF;
+    --green: #4A7C59;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.75;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    background: var(--cream);
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-watercolour-rosegold.png') center/cover;
+    opacity: 0.15;
+    pointer-events: none;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(212,168,130,0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 32px;
+}
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero .subtitle {
+    font-size: 1rem;
+    color: var(--bronze);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* CONTAINER */
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+/* SECTIONS */
+.section {
+    padding: 56px 0;
+    position: relative;
+}
+.section + .section { border-top: 1px solid rgba(196,149,106,0.12); }
+.section-mid { background: var(--mid-cream); }
+.section-mid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-embossed-rosegold.png') center/cover;
+    opacity: 0.06;
+    pointer-events: none;
+}
+.section .container { position: relative; z-index: 2; }
+.section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.9rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+.section .sub {
+    color: var(--bronze);
+    font-size: 0.88rem;
+    margin-bottom: 28px;
+}
+.section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-top: 36px;
+    margin-bottom: 12px;
+}
+
+/* CHECKLIST */
+.check-group { margin-bottom: 24px; }
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(196,149,106,0.1);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+.check-item:hover { border-color: var(--rose); box-shadow: 0 2px 12px rgba(196,149,106,0.1); }
+.check-item.done { opacity: 0.5; }
+.check-item.done .check-title { text-decoration: line-through; }
+.check-box {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid var(--rose);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: all 0.2s;
+}
+.check-item.done .check-box {
+    background: var(--rose);
+}
+.check-item.done .check-box::after {
+    content: '✓';
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.check-body { flex: 1; }
+.check-title { font-weight: 500; color: var(--navy); font-size: 0.92rem; }
+.check-desc { font-size: 0.82rem; color: var(--bronze); margin-top: 2px; }
+
+/* SKILL CARDS */
+.skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+}
+.skill-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(196,149,106,0.1);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--charcoal);
+    transition: all 0.3s;
+    backdrop-filter: blur(4px);
+}
+.skill-card:hover {
+    border-color: var(--rose);
+    box-shadow: 0 4px 16px rgba(196,149,106,0.12);
+    transform: translateY(-1px);
+}
+.skill-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.skill-card .skill-name { font-weight: 500; font-size: 0.88rem; color: var(--navy); }
+.skill-card .skill-what { font-size: 0.75rem; color: var(--bronze); }
+
+/* PROMPT CARDS */
+.prompt-card {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(196,149,106,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s;
+}
+.prompt-card:hover { box-shadow: 0 6px 24px rgba(196,149,106,0.12); }
+.prompt-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rose);
+    margin-bottom: 4px;
+}
+.prompt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+.prompt-text {
+    background: var(--cream);
+    border: 1px solid rgba(196,149,106,0.08);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+}
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose));
+    color: white;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+    box-shadow: 0 2px 6px rgba(196,149,106,0.25);
+}
+.copy-btn:hover { transform: translateY(-1px); }
+.copy-btn.copied { background: var(--green); }
+
+/* TIPS */
+.tip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+}
+.tip-card {
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(196,149,106,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+.tip-card .tip-title {
+    font-weight: 500;
+    color: var(--navy);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+.tip-card .tip-desc {
+    font-size: 0.82rem;
+    color: var(--bronze);
+}
+
+/* CALLOUT */
+.callout {
+    background: linear-gradient(135deg, var(--light-rose), var(--rose), var(--bronze));
+    color: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(196,149,106,0.25);
+}
+.callout::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/rosegold-brushed-metal.png') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+}
+.callout span { position: relative; z-index: 2; }
+
+/* HOW TO */
+.how-to {
+    background: rgba(196,149,106,0.06);
+    border-left: 3px solid var(--rose);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 0.86rem;
+}
+.how-to strong { font-weight: 500; color: var(--navy); }
+.how-to ol { padding-left: 18px; margin-top: 8px; }
+.how-to li { margin-bottom: 4px; }
+
+/* DIVIDER */
+.rose-strip {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+    border: none;
+    margin: 0;
+}
+
+/* FOOTER */
+.footer {
+    background: var(--mid-cream);
+    text-align: center;
+    padding: 40px;
+    border-top: 2px solid rgba(196,149,106,0.15);
+    position: relative;
+}
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-embossed-rosegold.png') center/cover;
+    opacity: 0.06;
+    pointer-events: none;
+}
+.footer * { position: relative; z-index: 2; }
+.footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: var(--rose);
+    margin-bottom: 4px;
+}
+.footer .footer-logo em { font-style: italic; color: var(--navy); }
+.footer p { font-size: 0.8rem; color: var(--bronze); }
+.footer a { color: var(--rose); text-decoration: none; }
+
+@media (max-width: 600px) {
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 2rem; }
+    .skill-grid, .tip-grid { grid-template-columns: 1fr; }
+    .section { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <div class="logo">AI with Soul</div>
+        <h1>Your Claude <em>Toolkit</em></h1>
+        <p class="subtitle">Everything from today's session in one place. Skills to download, connectors to set up, and prompts to try.</p>
+    </div>
+</div>
+
+<hr class="rose-strip">
+
+<!-- STEP 1: CONNECTORS -->
+<section class="section">
+    <div class="container">
+        <h2>Step 1 - Connect Your Apps</h2>
+        <p class="sub">Go to Settings > Connectors in Claude. Connect these so Claude can work across your tools.</p>
+
+        <h3>Do These First</h3>
+        <div class="check-group">
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Canva</div>
+                    <div class="check-desc">Didn't fully connect during our session. Try again. Make sure your brand kit has your colours AND photos loaded so Claude can pull from them.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Gmail</div>
+                    <div class="check-desc">Already connected. Check permissions: Always allow Read, Create Draft, Create Label, Add Labels to Messages, List Drafts.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Microsoft 365 / Outlook</div>
+                    <div class="check-desc">Failed during session (personal email issue). Try logging in with your work/business Microsoft account instead.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Zoom</div>
+                    <div class="check-desc">Connect this and you can say "Create a Zoom meeting with [name] at [time]" and Claude handles it.</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Nice to Have (When You're Ready)</h3>
+        <div class="check-group">
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">SEMrush</div>
+                    <div class="check-desc">SEO research for your website - useful for the corporate page.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">DocuSign</div>
+                    <div class="check-desc">Claude creates a contract, you say "send it to DocuSign for signing" - done.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Descript</div>
+                    <div class="check-desc">Great for editing your workshop and reel videos.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- STEP 2: PLUGINS -->
+<section class="section section-mid">
+    <div class="container">
+        <h2>Step 2 - Add Your Plugins</h2>
+        <p class="sub">Go to Settings > Plugins in Claude.</p>
+
+        <div class="check-group">
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Claude Design (by Anthropic)</div>
+                    <div class="check-desc">Already added. This lets Claude create images and graphics for you - Instagram posts, carousels, thumbnails.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Chrome Extension</div>
+                    <div class="check-desc">Already installed. Use Claude on any webpage - highlight text, ask questions about articles, research competitors.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">PDF Viewer</div>
+                    <div class="check-desc">So Claude can read any PDFs you download - reports, documents, contracts.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Vibe Prospecting</div>
+                    <div class="check-desc">Find corporate companies to pitch your wellbeing services to. Great for your new corporate offering.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- STEP 3: SKILLS -->
+<section class="section">
+    <div class="container">
+        <h2>Step 3 - Upload Your Skills</h2>
+        <p class="sub">These are instruction files that teach Claude specific abilities. Download each one, then upload it into your JM Wellbeing project.</p>
+
+        <div class="how-to">
+            <strong>How to install a skill:</strong>
+            <ol>
+                <li>Click the skill below to download the .md file</li>
+                <li>Open Claude and go to your <strong>JM Wellbeing</strong> project</li>
+                <li>Click <strong>Add Content</strong> (or Add Knowledge)</li>
+                <li>Upload the .md file</li>
+                <li>Repeat for each skill</li>
+            </ol>
+        </div>
+
+        <div class="skill-grid">
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/hook-generator.md" download>
+                <div class="skill-icon">01</div>
+                <div>
+                    <div class="skill-name">Hook Generator</div>
+                    <div class="skill-what">Scroll-stopping openers for posts and reels</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/ai-writing-detector.md" download>
+                <div class="skill-icon">02</div>
+                <div>
+                    <div class="skill-name">AI Writing Detector</div>
+                    <div class="skill-what">Catch AI slop before you publish</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/brand-voice-guide.md" download>
+                <div class="skill-icon">03</div>
+                <div>
+                    <div class="skill-name">Brand Voice Guide</div>
+                    <div class="skill-what">Build and check voice consistency</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/client-email-writer.md" download>
+                <div class="skill-icon">04</div>
+                <div>
+                    <div class="skill-name">Client Email Writer</div>
+                    <div class="skill-what">Emails, follow-ups, thank-yous</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/content-repurposer.md" download>
+                <div class="skill-icon">05</div>
+                <div>
+                    <div class="skill-name">Content Repurposer</div>
+                    <div class="skill-what">One post into 5 platforms</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/keyword-research.md" download>
+                <div class="skill-icon">06</div>
+                <div>
+                    <div class="skill-name">Keyword Research</div>
+                    <div class="skill-what">What your audience is searching for</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/social-media-research.md" download>
+                <div class="skill-icon">07</div>
+                <div>
+                    <div class="skill-name">Social Media Research</div>
+                    <div class="skill-what">Competitor analysis and content ideas</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/pre-call-brief.md" download>
+                <div class="skill-icon">08</div>
+                <div>
+                    <div class="skill-name">Pre-Call Brief</div>
+                    <div class="skill-what">Research before sales or corporate calls</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/proposal-generator.md" download>
+                <div class="skill-icon">09</div>
+                <div>
+                    <div class="skill-name">Proposal Generator</div>
+                    <div class="skill-what">Corporate wellbeing proposals</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/sales-marketing-genius.md" download>
+                <div class="skill-icon">10</div>
+                <div>
+                    <div class="skill-name">Sales and Marketing</div>
+                    <div class="skill-what">Email copy, scripts, outreach</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/ai-search-optimisation.md" download>
+                <div class="skill-icon">11</div>
+                <div>
+                    <div class="skill-name">AI Search Optimisation</div>
+                    <div class="skill-what">Get found by AI search engines</div>
+                </div>
+            </a>
+            <a class="skill-card" href="https://raw.githubusercontent.com/aiwithsoulofficial/jm-claude-guide/master/skills/website-seo-audit.md" download>
+                <div class="skill-icon">12</div>
+                <div>
+                    <div class="skill-name">Website SEO Audit</div>
+                    <div class="skill-what">Full website health check</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- STEP 4: CANVA -->
+<section class="section section-mid">
+    <div class="container">
+        <h2>Step 4 - Set Up Your Canva Brand Kit</h2>
+        <p class="sub">So Claude can create on-brand visuals for you automatically.</p>
+
+        <div class="check-group">
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Upload your brand colours to Canva brand kit</div>
+                    <div class="check-desc">Deep Walnut #4A3728, Warm Cedar #8B7355, Soft Amber Gold #C4A87E, Warm Linen #F7F3ED, Dark Earth #2D2418, Driftwood #D4C5A9</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Upload your logos</div>
+                    <div class="check-desc">All logo variations - light, dark, icon, lockup</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Add your photos to a folder in Canva</div>
+                    <div class="check-desc">Headshots, mood images, textures, nature shots - everything Claude can use as backgrounds and content images</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout"><span>Once Canva is connected with your brand kit loaded, you can say "Make me an Instagram post" and Claude pulls your colours, fonts, and photos automatically.</span></div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- STEP 5: PREFERENCES -->
+<section class="section">
+    <div class="container">
+        <h2>Step 5 - Review Your Preferences</h2>
+        <p class="sub">We built your personal preferences together during the session. Give them a final check.</p>
+
+        <div class="check-group">
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Read through your preferences</div>
+                    <div class="check-desc">Go to Settings > Personal Preferences. Read everything out loud. Is it all true and accurate?</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Add any cringe words you missed</div>
+                    <div class="check-desc">As you use Claude, you'll notice words that don't sound like you. Add them to your banned list as you spot them.</div>
+                </div>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('done')">
+                <div class="check-box"></div>
+                <div class="check-body">
+                    <div class="check-title">Update anything that's changed</div>
+                    <div class="check-desc">New offerings, new pricing, new audience - keep this current and Claude stays current.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- PROMPTS TO TRY -->
+<section class="section section-mid">
+    <div class="container">
+        <h2>Prompts to Try This Week</h2>
+        <p class="sub">Start all of these inside your JM Wellbeing project. Copy, paste, go.</p>
+
+        <h3>Content with Images</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">Try This First</div>
+            <div class="prompt-title">Instagram Posts with Graphics</div>
+            <div class="prompt-text" id="pr1">Use your design plugin to create 5 Instagram posts about nervous system regulation tips for overwhelmed mums. Write the captions AND generate the images.<button class="copy-btn" onclick="copyBlock('pr1')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-label">Visual Content</div>
+            <div class="prompt-title">Carousel with Slides</div>
+            <div class="prompt-text" id="pr2">Create a 6-slide carousel about why affirmations don't work when your nervous system is dysregulated. Give me the text for each slide AND generate the slide images using my brand colours.<button class="copy-btn" onclick="copyBlock('pr2')">Copy</button></div>
+        </div>
+
+        <h3>Multiply Your Content</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">Content Repurposer</div>
+            <div class="prompt-title">One Post Into Five Platforms</div>
+            <div class="prompt-text" id="pr3">Take this caption and turn it into a LinkedIn post, a Facebook post, 3 Instagram story slides, an email to my list (sign off as "Jacqui x"), and a 30-second reel script:
+
+[paste any caption you've posted before]<button class="copy-btn" onclick="copyBlock('pr3')">Copy</button></div>
+        </div>
+
+        <h3>Email Management</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">Once Gmail is Connected</div>
+            <div class="prompt-title">Sort and Draft Your Inbox</div>
+            <div class="prompt-text" id="pr4">Go into my inbox and sort out what needs responding to. Draft replies in my voice for anything from a real person. Anything from a marketing list - leave it. Anything that's clearly junk - move to trash. Don't reply to any email marketing.<button class="copy-btn" onclick="copyBlock('pr4')">Copy</button></div>
+        </div>
+
+        <h3>Corporate Outreach</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">Your New Offering</div>
+            <div class="prompt-title">Corporate Wellbeing Pitch</div>
+            <div class="prompt-text" id="pr5">Write me an introductory email to send to Carers Queensland about my corporate wellbeing services. Position it around the 2026-27 Federal Budget funding for workplace carer supports. Keep it warm and professional - I'm a counsellor who brings real tools to workplaces, not a corporate consultant.<button class="copy-btn" onclick="copyBlock('pr5')">Copy</button></div>
+        </div>
+
+        <h3>Train Your Design Style</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">After Canva is Connected</div>
+            <div class="prompt-title">Teach Claude Your Visual Style</div>
+            <div class="prompt-text" id="pr6">I want you to take this as an example of template perfection. When I ask you to design for me for Instagram, this is what I want you to create. Note the text size, text placement, colour usage, and spacing. Never put text over faces. Always use my brand colours.
+
+[then upload a Canva post you love]<button class="copy-btn" onclick="copyBlock('pr6')">Copy</button></div>
+        </div>
+
+        <h3>Lock In What Works</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">When Claude Nails It</div>
+            <div class="prompt-title">Save It as a Skill</div>
+            <div class="prompt-text" id="pr7">That was perfect. Let's create a skill for this so we never have to go through this process again. Write me a skill file I can save and upload to my project.<button class="copy-btn" onclick="copyBlock('pr7')">Copy</button></div>
+        </div>
+
+        <h3>SEO for Corporate</h3>
+        <div class="prompt-card">
+            <div class="prompt-label">Website Strategy</div>
+            <div class="prompt-title">Corporate Page Keywords</div>
+            <div class="prompt-text" id="pr8">Give me 15-20 keywords that HR managers and workplace wellbeing coordinators in Australia would search for when looking for employee wellbeing programmes. Group them by intent - ready to buy, researching, and just exploring. Give me content ideas for each one.<button class="copy-btn" onclick="copyBlock('pr8')">Copy</button></div>
+        </div>
+    </div>
+</section>
+
+<hr class="rose-strip">
+
+<!-- TIPS -->
+<section class="section">
+    <div class="container">
+        <h2>Tips That Make It Work</h2>
+        <p class="sub">The habits that separate "I tried Claude" from "Claude runs my content."</p>
+
+        <div class="tip-grid">
+            <div class="tip-card">
+                <div class="tip-title">Speak, don't type</div>
+                <div class="tip-desc">Use your microphone. It's faster and your prompts come out more natural because you're using your actual voice.</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-title">Push back</div>
+                <div class="tip-desc">If it doesn't sound like you, say "That's too polished. Make it more real." or "Shorter." Claude gets better every time.</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-title">Slop check everything</div>
+                <div class="tip-desc">Before posting, paste it back and say "Check this for AI writing patterns. Flag anything that doesn't sound like me."</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-title">Always work in your Project</div>
+                <div class="tip-desc">Start chats inside JM Wellbeing so Claude has your brand guide. Outside the project = generic output.</div>
+            </div>
+        </div>
+
+        <div class="callout"><span>The system is set up. Now it just needs you to use it.</span></div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-logo">AI <em>with Soul</em></div>
+    <p>Built with care by Kelly Wotherspoon</p>
+    <p style="margin-top: 4px;"><a href="https://aiwithsoul.com.au">aiwithsoul.com.au</a> | Questions? Message Kelly anytime.</p>
+</div>
+
+<script>
+// Copy prompts
+function copyBlock(id) {
+    const el = document.getElementById(id);
+    const btn = el.querySelector('.copy-btn');
+    const clone = el.cloneNode(true);
+    const btnClone = clone.querySelector('.copy-btn');
+    if (btnClone) btnClone.remove();
+    const text = clone.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+}
+
+// Save checklist state
+document.querySelectorAll('.check-item').forEach((item, i) => {
+    const key = 'jm-check-' + i;
+    if (localStorage.getItem(key) === 'done') item.classList.add('done');
+    item.addEventListener('click', () => {
+        localStorage.setItem(key, item.classList.contains('done') ? 'done' : '');
+    });
+});
+</script>
+
+</body>
+</html>
