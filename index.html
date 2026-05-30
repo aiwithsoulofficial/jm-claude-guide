@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Claude Setup Guide - Built by AI with Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --cream: #FDF6F2;
+    --mid-cream: #F5EDE0;
+    --navy: #0F1E36;
+    --rose: #C4956A;
+    --light-rose: #D4A882;
+    --bronze: #B07856;
+    --cream-text: #F7E7CE;
+    --charcoal: #1A1A2E;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.75;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HERO - CREAM/ROSE GOLD ===== */
+.hero {
+    position: relative;
+    background: var(--cream);
+    color: var(--charcoal);
+    padding: 100px 40px 80px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-watercolour-rosegold.png') center/cover;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(212,168,130,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.hero .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--navy);
+}
+
+.hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+}
+
+.hero .subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--bronze);
+    max-width: 560px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+}
+
+.hero .for-badge {
+    display: inline-block;
+    border: 1px solid var(--rose);
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--rose);
+    letter-spacing: 0.05em;
+    background: rgba(253,246,242,0.6);
+    backdrop-filter: blur(4px);
+}
+
+/* ===== QUICK ACCESS BAR ===== */
+.quick-access {
+    background: var(--mid-cream);
+    border-bottom: 2px solid rgba(196,149,106,0.3);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.quick-access::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-embossed-rosegold.png') center/cover;
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+.quick-access * { position: relative; z-index: 2; }
+
+.quick-access .label {
+    color: var(--rose);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+}
+
+.quick-access a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background: rgba(196,149,106,0.1);
+    border: 1px solid rgba(196,149,106,0.25);
+    transition: all 0.3s;
+}
+
+.quick-access a:hover {
+    background: rgba(196,149,106,0.2);
+    border-color: var(--rose);
+}
+
+/* ===== NAV ===== */
+.nav {
+    background: rgba(253,246,242,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,149,106,0.15);
+    padding: 16px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 16px rgba(196,149,106,0.06);
+}
+
+.nav a {
+    color: var(--bronze);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav a:hover { color: var(--navy); }
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav a:hover::after { transform: scaleX(1); }
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    padding: 72px 0;
+    position: relative;
+}
+
+.section + .section {
+    border-top: 1px solid rgba(196,149,106,0.15);
+}
+
+.section-cream {
+    background: var(--cream);
+    position: relative;
+}
+
+.section-cream::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-linen-rosegold.png') center/cover;
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+.section-mid {
+    background: var(--mid-cream);
+    position: relative;
+}
+
+.section-mid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-embossed-rosegold.png') center/cover;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.section-watercolour {
+    background: var(--cream);
+    position: relative;
+}
+
+.section-watercolour::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-watercolour-rosegold.png') center/cover;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.section .container { position: relative; z-index: 2; }
+
+.section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.section .section-sub {
+    color: var(--bronze);
+    font-size: 0.9rem;
+    margin-bottom: 36px;
+    font-weight: 300;
+}
+
+.section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--navy);
+    margin-top: 44px;
+    margin-bottom: 14px;
+}
+
+p { margin-bottom: 12px; }
+
+/* ===== STEP CARDS ===== */
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(196,149,106,0.12);
+    box-shadow: 0 2px 12px rgba(196,149,106,0.04);
+    transition: box-shadow 0.4s;
+    backdrop-filter: blur(4px);
+}
+
+.step:hover { box-shadow: 0 4px 20px rgba(196,149,106,0.12); }
+
+.step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose));
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.step-body { flex: 1; }
+.step-body strong { font-weight: 500; color: var(--navy); }
+
+/* ===== COPY BLOCKS ===== */
+.copy-block {
+    position: relative;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(196,149,106,0.18);
+    border-radius: 12px;
+    padding: 24px 24px 24px;
+    margin: 20px 0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    backdrop-filter: blur(4px);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--light-rose) 0%, var(--rose) 40%, var(--bronze) 100%);
+    color: var(--white);
+    border: none;
+    padding: 7px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(196,149,106,0.3);
+}
+
+.copy-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,149,106,0.4); }
+.copy-btn.copied { background: var(--navy); box-shadow: 0 2px 8px rgba(15,30,54,0.3); }
+
+/* ===== TIPS ===== */
+.tip {
+    position: relative;
+    background: linear-gradient(135deg, rgba(196,149,106,0.08) 0%, rgba(212,168,130,0.05) 100%);
+    border-left: 3px solid var(--rose);
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.88rem;
+}
+
+.tip strong { font-weight: 500; color: var(--navy); }
+
+/* ===== TIME SAVED CALLOUTS ===== */
+.time-saved {
+    position: relative;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose), var(--bronze));
+    color: var(--white);
+    padding: 24px 32px;
+    border-radius: 12px;
+    margin: 32px 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(196,149,106,0.25);
+}
+
+.time-saved::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/rosegold-brushed-metal.png') center/cover;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.time-saved span { position: relative; z-index: 2; }
+
+/* ===== PROMPT CARDS ===== */
+.prompt-card {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(196,149,106,0.12);
+    border-radius: 14px;
+    padding: 28px;
+    margin: 20px 0;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 12px rgba(196,149,106,0.04);
+    backdrop-filter: blur(4px);
+}
+
+.prompt-card:hover {
+    box-shadow: 0 8px 32px rgba(196,149,106,0.15);
+    transform: translateY(-2px);
+}
+
+.prompt-card .prompt-num {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--rose);
+    margin-bottom: 4px;
+}
+
+.prompt-card .prompt-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.prompt-card .prompt-when {
+    color: var(--bronze);
+    font-size: 0.82rem;
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.prompt-card .prompt-text {
+    background: var(--cream);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 0.86rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+    border: 1px solid rgba(196,149,106,0.08);
+}
+
+/* ===== CATEGORY LABELS ===== */
+.cat-label {
+    color: var(--rose);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 48px;
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(196,149,106,0.15);
+}
+
+.cat-label:first-of-type { margin-top: 8px; }
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 14px 0 14px 36px;
+    position: relative;
+    border-bottom: 1px solid rgba(196,149,106,0.12);
+    font-size: 0.92rem;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 17px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--rose);
+    border-radius: 4px;
+}
+
+/* ===== OVERVIEW GRID ===== */
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.overview-card {
+    background: rgba(255,255,255,0.7);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid rgba(196,149,106,0.12);
+    box-shadow: 0 2px 12px rgba(196,149,106,0.04);
+    transition: all 0.4s;
+    backdrop-filter: blur(4px);
+}
+
+.overview-card:hover {
+    box-shadow: 0 8px 32px rgba(196,149,106,0.15);
+    transform: translateY(-3px);
+}
+
+.overview-card .card-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--light-rose), var(--rose));
+    color: var(--white);
+    border-radius: 50%;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.overview-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.overview-card p {
+    font-size: 0.82rem;
+    color: var(--bronze);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===== ACCENT STRIP (tiny navy moment) ===== */
+.accent-strip {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+    margin: 0;
+    border: none;
+}
+
+/* ===== FOOTER - small navy accent ===== */
+.footer {
+    background: var(--mid-cream);
+    text-align: center;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid rgba(196,149,106,0.2);
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('textures/cream-embossed-rosegold.png') center/cover;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.footer * { position: relative; z-index: 2; }
+
+.footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: var(--rose);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+}
+
+.footer .footer-logo em { font-style: italic; color: var(--navy); }
+
+.footer p { font-size: 0.85rem; color: var(--bronze); margin: 0; }
+
+.footer a { color: var(--rose); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+    .hero { padding: 60px 24px 50px; }
+    .hero h1 { font-size: 2.2rem; }
+    .nav { padding: 12px 16px; gap: 12px; }
+    .nav a { font-size: 0.75rem; }
+    .section { padding: 48px 0; }
+    .step { flex-direction: column; gap: 10px; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .quick-access { padding: 12px 16px; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <div class="hero-content">
+        <div class="logo">AI with Soul</div>
+        <h1>Your Claude<br>Setup <em>Guide</em></h1>
+        <p class="subtitle">Everything you need to start creating content, writing copy, and growing your business with Claude as your creative partner.</p>
+        <div class="for-badge">Built for Jacqui McGregor Wellbeing</div>
+    </div>
+</div>
+
+<!-- ===== QUICK ACCESS ===== -->
+<div class="quick-access">
+    <span class="label">Quick Links</span>
+    <a href="https://www.dropbox.com/home/Jacqui%20Mentorship" target="_blank">Jacqui's Dropbox</a>
+    <a href="https://claude.ai" target="_blank">Open Claude</a>
+    <a href="#playbook">Prompt Playbook</a>
+    <a href="#habits">Daily Habits</a>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <a href="#overview">Overview</a>
+    <a href="#step1">Preferences</a>
+    <a href="#step2">Your Project</a>
+    <a href="#step3">Try It Live</a>
+    <a href="#playbook">Prompt Playbook</a>
+    <a href="#habits">Daily Habits</a>
+</nav>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="section section-cream" id="overview">
+    <div class="container">
+        <h2>What We're Setting Up Today</h2>
+        <p class="section-sub">Three things that turn Claude from a chatbot into your creative partner</p>
+
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="card-num">1</div>
+                <h4>Personal Preferences</h4>
+                <p>Tell Claude who you are once. Every conversation already knows your voice.</p>
+            </div>
+            <div class="overview-card">
+                <div class="card-num">2</div>
+                <h4>Your Brand Project</h4>
+                <p>Upload your brand guide so everything Claude creates is on-brand.</p>
+            </div>
+            <div class="overview-card">
+                <div class="card-num">3</div>
+                <h4>Your Prompt Playbook</h4>
+                <p>14 ready-to-use prompts for content, emails, strategy, and more.</p>
+            </div>
+        </div>
+
+        <div class="time-saved"><span>What used to take you a full day of content creation will take 30 minutes.</span></div>
+    </div>
+</section>
+
+<hr class="accent-strip">
+
+<!-- ===== STEP 1 ===== -->
+<section class="section section-mid" id="step1">
+    <div class="container">
+        <h2>Step 1 - Personal Preferences</h2>
+        <p class="section-sub">This is like introducing yourself. Every conversation from now on, Claude already knows who you are.</p>
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <p>Open <strong>Claude Desktop</strong> or go to <strong>claude.ai</strong></p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <p><strong>Claude Desktop:</strong> Click your name (bottom left), then Settings, then Personal Preferences</p>
+                <p><strong>claude.ai:</strong> Click your profile icon (top right), then Settings, then Profile, find the Preferences box</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <p>Copy the text below and paste it into your preferences box, then hit <strong>Save</strong>.</p>
+            </div>
+        </div>
+
+        <div class="copy-block" id="prefs-text">I'm Jacqui McGregor. I run Jacqui McGregor Wellbeing - counselling, coaching, and my group programme Calmer Pathways.
+
+My target audience is overwhelmed mums in their 40s who've tried everything and nothing stuck. I call her "Emma."
+
+My brand voice is earthy, real, grounding, warm, and unhurried. I swear sometimes. I give permission, not motivation. I work body-first - nervous system regulation, not mindset.
+
+Words I use: lighter, permission, hold space, calm, regulate, breathe, enough, real, safe, fog, pace, steady, kinder, grounding, exhale, soften, whole, spacious, settled, practical, home.
+
+Words I never use: journey, transform, manifest, empowered, heal, fix, hustle, mindset, high vibe, alignment, quantum, breakthrough, boss babe, level up, optimize, delve, unlock, elevate, landscape, realm, tapestry, beacon, game-changer.
+
+My tagline is "Come home to yourself."
+My core promise is "From depleted to lighter in 6 weeks."
+
+I'm based on the Sunshine Coast, QLD, Australia. My Instagram is @jmwellbeing and my website is jmwellbeing.com.au.
+
+I speak in Australian English (colour, organisation, programme).
+
+Never use emdashes in any output - use hyphens with spaces or rewrite the sentence. Never use the "it's not X - it's Y" contrast pattern. Never make my audience feel broken or in need of fixing.<button class="copy-btn" onclick="copyBlock('prefs-text')">Copy</button></div>
+
+        <div class="tip">
+            <strong>Why this matters:</strong> Without preferences, you'd have to explain your voice, your audience, and your banned words every single time you open Claude. This saves the first 5 minutes of every conversation. Forever.
+        </div>
+
+        <h3>Test it right now</h3>
+        <p>Start a brand new chat and type:</p>
+
+        <div class="copy-block" id="test1">Write me one Instagram caption about feeling overwhelmed as a mum.<button class="copy-btn" onclick="copyBlock('test1')">Copy</button></div>
+
+        <p>The result should already sound like you - warm, earthy, body-level. Not like a wellness influencer. If it does, your preferences are working.</p>
+
+        <div class="time-saved"><span>You just saved yourself from explaining your brand in every single conversation. Forever.</span></div>
+    </div>
+</section>
+
+<hr class="accent-strip">
+
+<!-- ===== STEP 2 ===== -->
+<section class="section section-watercolour" id="step2">
+    <div class="container">
+        <h2>Step 2 - Create Your Brand Project</h2>
+        <p class="section-sub">Projects let you give Claude your entire brand guide. Everything it creates is on-brand, every time.</p>
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><p>In the sidebar, click <strong>Projects</strong></p></div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><p>Click <strong>Create Project</strong> and name it: <strong>JM Wellbeing</strong></p></div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><p>In the <strong>Custom Instructions</strong> box, paste the text below:</p></div>
+        </div>
+
+        <div class="copy-block" id="project-text">You are the content and copy assistant for Jacqui McGregor Wellbeing.
+
+Brand Voice: Warm, grounded, compassionate, steady, real. Like a trusted friend who also has deep expertise. Never clinical, salesy, corporate, or performative. Short warm sentences. Speak directly to the reader using "you" and "your."
+
+Design References:
+- Colours: Deep Walnut #4A3728 (headings), Warm Cedar #8B7355 (accents), Soft Amber Gold #C4A87E (highlights), Warm Linen #F7F3ED (backgrounds - never pure white), Dark Earth #2D2418 (body text), Driftwood #D4C5A9 (soft backgrounds)
+- Fonts: Cormorant Garamond for headings, Work Sans for body
+- Aesthetic: Japandi Wellness - warm cream, fine-line botanical motifs, generous white space
+
+Content Rules:
+- Lead with emotion and empathy, not features or credentials
+- Tie back to the transformation: from depleted to lighter, from carrying everything to feeling held
+- Use taglines naturally - "Come home to yourself" is the anchor
+- Never make the audience feel broken
+- Every piece needs a soft CTA - "If this resonates, I am here"
+- Hashtags: #JacquiMcGregorWellbeing #ComeHomeToYourself #CalmerPathways #LighterCalmerYou
+- Australian English spelling always
+
+Offerings:
+- Calmer Pathways: 6-week group programme, $495, Zoom - "From depleted to lighter in 6 weeks"
+- 1:1 Counselling (women): $150/hr
+- 1:1 Coaching (teens 16+): $220/hr
+- Corporate wellbeing for organisations (in development)
+- Booking: clientportal.zandahealth.com/clientportal/jmwellbeing
+
+Audiences:
+- Primary "Emma": Exhausted woman 40+, juggling everything, little support, tried everything
+- Secondary "Charlotte": Teen 16+, accessed through mum, identity and school pressure
+- Corporate: Organisations needing employee/carer wellbeing support
+
+What Makes Jacqui Different: Grounded in lived experience as a carer. Body-level work, not mindset. Real, swears, holds space. "Exhale" not polished wellness.<button class="copy-btn" onclick="copyBlock('project-text')">Copy</button></div>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+                <p>Click <strong>Add Content</strong> (or "Add Knowledge") and upload your brand guide file from your Brand-Kit folder.</p>
+                <p>You can also upload testimonials, programme outlines, workshop content - anything you want Claude to reference.</p>
+            </div>
+        </div>
+
+        <div class="tip">
+            <strong>The golden rule:</strong> Always start your chats inside this project. If you start a random chat outside it, Claude won't have your brand guide loaded. Inside the project = on-brand. Outside = generic.
+        </div>
+
+        <div class="time-saved"><span>Every brief you'd normally write for a designer or copywriter? Claude already has it. Hours of back-and-forth, gone.</span></div>
+    </div>
+</section>
+
+<hr class="accent-strip">
+
+<!-- ===== STEP 3 ===== -->
+<section class="section section-mid" id="step3">
+    <div class="container">
+        <h2>Step 3 - Let's Try It Live</h2>
+        <p class="section-sub">Open a new chat inside your JM Wellbeing project and test these.</p>
+
+        <h3>Test 1 - A Caption in 30 Seconds</h3>
+        <div class="copy-block" id="demo1">Write me an Instagram caption about the guilt mums feel when they need a break. 80 words max. End with a soft CTA and 5 hashtags.<button class="copy-btn" onclick="copyBlock('demo1')">Copy</button></div>
+
+        <div class="tip">
+            <strong>Read it out loud.</strong> Does it sound like something you'd actually say? If not, tell Claude: "Make it more real. Less polished. Shorter sentences." It gets better every time you correct it.
+        </div>
+
+        <h3>Test 2 - Five Hooks, 30 Seconds</h3>
+        <div class="copy-block" id="demo2">Write me 5 different scroll-stopping opening lines for a post about what rest actually looks like for mums who carry everything. Make each one a different style - one question, one statement, one "you know that feeling" opener, one that challenges a common belief, and one that validates.<button class="copy-btn" onclick="copyBlock('demo2')">Copy</button></div>
+
+        <h3>Test 3 - One Post Becomes Five</h3>
+        <div class="copy-block" id="demo3">Take the Instagram caption you just wrote and turn it into:
+1. A LinkedIn post (professional but still warm)
+2. A Facebook post (conversational)
+3. 3 Instagram story slides (short punchy text, one idea per slide)
+4. An email to my list (personal, sign off as "Jacqui x")
+5. A TikTok script (30-45 seconds, spoken word)<button class="copy-btn" onclick="copyBlock('demo3')">Copy</button></div>
+
+        <div class="time-saved"><span>You just created a week of content across 5 platforms from one idea. That used to take a full day.</span></div>
+
+        <h3>Test 4 - The AI Detector</h3>
+        <p>Take any content Claude created and run this:</p>
+        <div class="copy-block" id="demo4">Check this content for AI-sounding patterns. Flag anything that sounds generic, over-polished, or like every other wellness coach on Instagram. Look for sentences I would never actually say out loud. Rewrite any flagged sections in my actual voice. Show me before/after.
+
+[PASTE YOUR CONTENT HERE]<button class="copy-btn" onclick="copyBlock('demo4')">Copy</button></div>
+
+        <div class="tip">
+            <strong>This is your quality filter.</strong> Never post content without running this. 60 seconds. Keeps you sounding like you, not like AI.
+        </div>
+    </div>
+</section>
+
+<hr class="accent-strip">
+
+<!-- ===== PROMPT PLAYBOOK ===== -->
+<section class="section section-cream" id="playbook">
+    <div class="container">
+        <h2>Your Prompt Playbook</h2>
+        <p class="section-sub">14 ready-to-use prompts. Copy, fill in the [BRACKETS], paste into Claude inside your project.</p>
+
+        <!-- CONTENT -->
+        <div class="cat-label">Content Creation</div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 01</div>
+            <div class="prompt-name">Scroll-Stopping Hook</div>
+            <div class="prompt-when">When you need the opening line for a reel, post, or carousel</div>
+            <div class="prompt-text" id="p1">Write me 5 different scroll-stopping opening lines for a post about [TOPIC].
+
+Mix the styles:
+- One that validates what they're feeling
+- One that challenges a common belief (gently)
+- One that starts with "You know that feeling when..."
+- One that's a short punchy statement
+- One that asks a question they'll nod at
+
+Keep them in my voice. No clickbait. No shame. Each one should make Emma stop scrolling because she feels SEEN.<button class="copy-btn" onclick="copyBlock('p1')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 02</div>
+            <div class="prompt-name">Instagram Caption</div>
+            <div class="prompt-when">When you need a caption ready to post</div>
+            <div class="prompt-text" id="p2">Write me an Instagram caption about [TOPIC].
+
+50-150 words. Start with a hook that stops the scroll. Write it like I'm talking to one woman over tea - warm, real, no performance. End with a soft CTA and 5-8 hashtags including #ComeHomeToYourself.
+
+Don't use any of my banned words. Make it sound like ME, not a wellness influencer.<button class="copy-btn" onclick="copyBlock('p2')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 03</div>
+            <div class="prompt-name">Week of Content Ideas</div>
+            <div class="prompt-when">When you're blank on what to post this week</div>
+            <div class="prompt-text" id="p3">Give me 7 content ideas for this week on Instagram - one for each day.
+
+Mix it up:
+- Monday: something grounding to start the week
+- Tuesday: a tip or tool they can use today
+- Wednesday: a permission-giving post
+- Thursday: a story or reflection (personal angle)
+- Friday: Calmer Pathways related
+- Saturday: a quote tile or one-liner
+- Sunday: something soft and restful
+
+For each one give me: the format (reel, carousel, quote tile, story), a hook line, and 2 sentences on what the post says.<button class="copy-btn" onclick="copyBlock('p3')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 04</div>
+            <div class="prompt-name">Carousel Outline</div>
+            <div class="prompt-when">When you want to create a multi-slide carousel</div>
+            <div class="prompt-text" id="p4">Create a 6-slide Instagram carousel about [TOPIC].
+
+Slide 1: Hook headline that stops the scroll (big, bold, emotional)
+Slides 2-5: One key point per slide, max 15 words per slide, punchy
+Slide 6: CTA with my booking link or Calmer Pathways details
+
+Write in my voice - earthy, real, body-level. Tell me what colours and layout to use from my brand palette for each slide.<button class="copy-btn" onclick="copyBlock('p4')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 05</div>
+            <div class="prompt-name">Content Repurposer</div>
+            <div class="prompt-when">When you have one good post and want to stretch it everywhere</div>
+            <div class="prompt-text" id="p5">I have this piece of content:
+
+[PASTE YOUR ORIGINAL POST OR CAPTION HERE]
+
+Turn it into:
+1. A LinkedIn post (professional but still warm, add a CTA)
+2. A Facebook post (conversational, community feel)
+3. 3 Instagram story slides (short punchy text, one idea per slide)
+4. An email to my list (personal, warm, sign off as "Jacqui x")
+5. A TikTok/reel script (30-45 seconds, spoken word style)
+
+Keep my voice consistent across all of them.<button class="copy-btn" onclick="copyBlock('p5')">Copy</button></div>
+        </div>
+
+        <!-- QUALITY -->
+        <div class="cat-label">Quality Checks</div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 06</div>
+            <div class="prompt-name">Slop Check</div>
+            <div class="prompt-when">Before you publish ANYTHING - run this first</div>
+            <div class="prompt-text" id="p6">Check this content for AI-sounding patterns. Flag anything that sounds generic, over-polished, or like every other wellness coach on Instagram:
+
+[PASTE YOUR CONTENT HERE]
+
+Look for:
+- Words from my banned list
+- Sentences that are too perfect or too long
+- The "it's not X - it's Y" contrast pattern
+- Emdashes (should be hyphens with spaces)
+- Anything that sounds like a TED talk instead of a real person
+- Overuse of "imagine" or "what if"
+- Sentences I would never actually say out loud
+
+Rewrite any flagged sections in my actual voice. Show me before/after.<button class="copy-btn" onclick="copyBlock('p6')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 07</div>
+            <div class="prompt-name">Brand Voice Check</div>
+            <div class="prompt-when">When you want to make sure something sounds like you</div>
+            <div class="prompt-text" id="p7">Read this and score it out of 10 for how much it sounds like me:
+
+[PASTE YOUR CONTENT HERE]
+
+Check against my voice: warm, grounded, real, body-level, compassionate, steady. Like a trusted friend, not a coach on stage.
+
+If it scores below 8, rewrite it to sound more like me. Tell me what you changed and why.<button class="copy-btn" onclick="copyBlock('p7')">Copy</button></div>
+        </div>
+
+        <!-- EMAILS -->
+        <div class="cat-label">Emails</div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 08</div>
+            <div class="prompt-name">Email to Your List</div>
+            <div class="prompt-when">When you need to email your subscribers</div>
+            <div class="prompt-text" id="p8">Write an email to my list about [TOPIC].
+
+Subject line: warm and curious, never clickbait
+Opening: empathy or a question - never "Hi [name], I hope this finds you well"
+Body: personal, like a voice memo to a friend. 200-300 words max.
+CTA: one clear next step, softly stated
+Sign off: "Jacqui x"
+
+Don't make it sound like a newsletter. Make it sound like me.<button class="copy-btn" onclick="copyBlock('p8')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 09</div>
+            <div class="prompt-name">Professional Outreach Email</div>
+            <div class="prompt-when">Reaching out to NDIS coordinators, corporate HR, referral partners</div>
+            <div class="prompt-text" id="p9">Write a warm professional email to [WHO - e.g. "an NDIS support coordinator" or "a corporate HR manager"].
+
+Purpose: [WHAT YOU WANT - e.g. "introduce my corporate wellbeing offering" or "propose a referral partnership"]
+
+Keep it short (under 200 words). Open with something genuine about their work. Explain what I do in one sentence. Make the ask clear but not pushy. Sign off as Jacqui.<button class="copy-btn" onclick="copyBlock('p9')">Copy</button></div>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="cat-label">Business and Strategy</div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 10</div>
+            <div class="prompt-name">Landing Page Copy</div>
+            <div class="prompt-when">When you need copy for a new page on your website</div>
+            <div class="prompt-text" id="p10">Write the copy for a [TYPE - e.g. "Calmer Pathways sales page" or "Corporate Wellbeing landing page"] on my website.
+
+Structure:
+- Hero headline + subheadline (emotional, speaks to the pain point)
+- "Is this you?" section (3-4 bullet points describing Emma's experience)
+- What this is (programme description)
+- What's included (bullet points)
+- Transformation section (before/after feeling, not features)
+- Testimonial placeholder
+- Pricing + CTA
+- FAQ (3-4 common questions)
+
+Write in my voice. Make it feel like a warm invitation, not a sales pitch.<button class="copy-btn" onclick="copyBlock('p10')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 11</div>
+            <div class="prompt-name">Keyword Ideas</div>
+            <div class="prompt-when">When you want to know what your audience is searching for</div>
+            <div class="prompt-text" id="p11">Give me 15-20 keywords and phrases that my ideal client (Emma - overwhelmed mum, 40+, Sunshine Coast, QLD) might be searching for.
+
+Group them:
+- "Ready to book" keywords (she knows she wants help)
+- "Exploring" keywords (she's researching, not ready yet)
+- "Doesn't know what she needs" keywords (she's Googling how she feels)
+
+For each keyword tell me: what to write about it (blog post, page, social post) and a suggested title.<button class="copy-btn" onclick="copyBlock('p11')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 12</div>
+            <div class="prompt-name">Programme Content</div>
+            <div class="prompt-when">When you need to build workshop or programme material</div>
+            <div class="prompt-text" id="p12">Help me create [WHAT - e.g. "the outline for a corporate wellbeing workshop" or "week 3 of Calmer Pathways on boundaries"].
+
+For a workshop: Give me a 90-minute structure with timing, activities, and talking points.
+For a programme module: Learning objectives, key teaching points, one practical exercise, and take-home reflection.
+
+My approach is body-first, not mindset. Grounded in nervous system regulation, practical tools, and self-compassion. No toxic positivity.<button class="copy-btn" onclick="copyBlock('p12')">Copy</button></div>
+        </div>
+
+        <!-- CORPORATE -->
+        <div class="cat-label">Corporate Wellbeing</div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 13</div>
+            <div class="prompt-name">Corporate Pitch</div>
+            <div class="prompt-when">When you're approaching an organisation about wellbeing services</div>
+            <div class="prompt-text" id="p13">Help me write a [WHAT - e.g. "one-page proposal" or "introductory email"] for [ORGANISATION NAME/TYPE].
+
+Position my corporate wellbeing offering around:
+- The 2026-27 Federal Budget funding for workplace carer supports
+- Employee burnout and retention
+- Practical, body-level wellbeing (not another mindfulness app)
+
+Keep it professional but warm. I'm not a corporate consultant - I'm a counsellor who brings real tools to workplaces. Make that a strength, not a gap.<button class="copy-btn" onclick="copyBlock('p13')">Copy</button></div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-num">Prompt 14</div>
+            <div class="prompt-name">LinkedIn Post</div>
+            <div class="prompt-when">When you want to reach HR managers, coordinators, and business owners</div>
+            <div class="prompt-text" id="p14">Write me a LinkedIn post about [TOPIC - e.g. "why most workplace wellbeing programmes don't work"].
+
+Professional but still warm and grounded. Not corporate-speak. 150-250 words. End with a clear CTA - either to message me, visit my website, or share the post.
+
+This is for HR managers, support coordinators, and business owners who care about their people. Speak to them as a peer.<button class="copy-btn" onclick="copyBlock('p14')">Copy</button></div>
+        </div>
+    </div>
+</section>
+
+<hr class="accent-strip">
+
+<!-- ===== HABITS ===== -->
+<section class="section section-mid" id="habits">
+    <div class="container">
+        <h2>Three Daily Habits</h2>
+        <p class="section-sub">These make the difference between "I tried Claude" and "Claude runs my content."</p>
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <strong>Always work inside your Project</strong>
+                <p>If you start a random chat outside the project, Claude doesn't have your brand guide. Always click into JM Wellbeing first. Inside the project = on-brand. Outside = generic.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <strong>Read it out loud</strong>
+                <p>If you wouldn't say it at your kitchen table, tell Claude to rewrite it. You're the quality filter. Claude is the speed.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <strong>Slop check before posting</strong>
+                <p>Copy your content, run Prompt #6. Takes 60 seconds. Keeps you sounding like you, not like every other account on Instagram.</p>
+            </div>
+        </div>
+
+        <div class="time-saved"><span>The system is set up. Now it just needs you to use it.</span></div>
+
+        <h3>This Week's Homework</h3>
+        <ul class="checklist">
+            <li>Create 3 Instagram captions using Prompt #2</li>
+            <li>Run the slop check (Prompt #6) on each one before posting</li>
+            <li>Use Prompt #3 to plan next week's content</li>
+            <li>Start a chat about the corporate page using Prompt #10</li>
+        </ul>
+
+        <div class="tip" style="margin-top: 40px;">
+            <strong>Pro tip:</strong> Claude Pro ($20/month USD) gives you more messages and is worth it if you're using it daily. You can also upload more files to your project over time - testimonials, workshop recordings, programme manuals. The more Claude knows, the better it gets.
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+    <div class="footer-logo">AI <em>with Soul</em></div>
+    <p>Built with care by Kelly Wotherspoon</p>
+    <p style="margin-top: 8px;"><a href="https://aiwithsoul.com.au">aiwithsoul.com.au</a></p>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+function copyBlock(id) {
+    const el = document.getElementById(id);
+    const btn = el.querySelector('.copy-btn');
+    const clone = el.cloneNode(true);
+    const btnClone = clone.querySelector('.copy-btn');
+    if (btnClone) btnClone.remove();
+    const text = clone.textContent.trim();
+
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
